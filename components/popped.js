@@ -19,7 +19,7 @@ class Popped extends Component {
         </header>
           <div className="error">{this.state.error}</div>
         <div >
-          <Link className="link down" to="/4">Current</Link>
+          <Link className="link down" to="/done">Current</Link>
           <div className="popped-wrapper clearfix">
             <span className="pop-col">
               <strong>name</strong>

@@ -25,7 +25,7 @@ class Current extends Component {
     // }
     console.log(this.props.params.tut_phase);
 
-    if(this.state.demoPhase===4||this.props.params.tut_phase==="4") {
+    if(this.state.demoPhase===4||this.props.params.tut_phase==="done") {
       return (
         <App>
           <CurrentInner />

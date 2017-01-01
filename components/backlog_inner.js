@@ -24,7 +24,7 @@ class BackLogInner extends Component {
     return (
       <div>
         <div className="left-column centerChildren">
-          <Link className="link up" to="/4">Current</Link>
+          <Link className="link up" to="/done">Current</Link>
           <BlowBubble newBubble={this.props.newBubble} updateNewBubble={this.props.updateNewBubble} submitNewBubble={() => this.props.submitNewBubble(this.url)} />
           <MakeCurrent toggleMakeCurrent={this.toggleMakeCurrent} />
           <DeleteBubble toggleDelete={this.props.toggleDelete}/>
