@@ -79,7 +79,7 @@ class Current extends Component {
   }
 
   componentDidMount = () => {
-    if (this.state.demoPhase===1&&this.props.params.tut_phase!=="4"){
+    if (this.state.demoPhase===1&&this.props.params.tut_phase!=="done"){
       fetch('/api/bubbles/all', {
         method: 'DELETE'
       })
