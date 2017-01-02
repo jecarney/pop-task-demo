@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './app.css'
+require('es6-promise').polyfill();
+import fetch from "isomorphic-fetch";
 
 class App extends Component {
   constructor() {
