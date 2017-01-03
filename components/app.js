@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './app.css'
 require('es6-promise').polyfill();
 import fetch from "isomorphic-fetch";
+import moment from 'moment'
 
 class App extends Component {
   constructor() {
@@ -12,9 +13,9 @@ class App extends Component {
       newBubble: {
         "name": "",
         "priority":1,
-        "duedate": Date.now,
-        "taskStartDate":Date.now,
-        "intervalStart":Date.now,
+        "duedate": moment().valueOf(),
+        "taskStartDate":moment().valueOf(),
+        "intervalStart":moment().valueOf(),
         "duration_seconds":0
       },
       deleteActive: false,
@@ -108,9 +109,9 @@ class App extends Component {
        newBubble: {
          "name": "",
          "priority":1,
-         "duedate": Date.now,
-         "taskStartDate":Date.now,
-         "intervalStart":Date.now,
+         "duedate": moment().valueOf(),
+         "taskStartDate":moment().valueOf(),
+         "intervalStart":moment().valueOf(),
          "duration_seconds":0
        }
      });

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import 'react-date-picker/index.css'
+import { DatePicker, DateField, Calendar } from 'react-date-picker'
 
 class SidePanelEdit extends Component {
   render() {
@@ -8,16 +10,18 @@ class SidePanelEdit extends Component {
       return (
       <div className="sidepanel">
         <div>
-            name :
+            <span>name : </span>
             <input id="name" value={this.props.editBubble.name} onChange={(evt)=>this.props.updateEditBubble("name", evt) } type="text"  />
         </div>
         <div>
-            duration:
+            <span>duration : </span>
             <input id="duration_seconds" value={this.props.editBubble.duration_seconds/60} onChange={(evt)=>this.props.updateEditBubble("duration_seconds", evt)} type="number" />
         </div>
         <div>
-            due date:
-            <input id="duedate" value={this.props.editBubble.duedate} onChange={ (evt)=>this.props.updateEditBubble("duedate", evt) } type="date" />
+            <span>due date : </span>
+            <DateField dateFormat="YYYY-MM-DD" forceValidDate={true} value={this.props.editBubble.duedate} updateOnDateClick={true} collapseOnDateClick={true} >
+              <DatePicker navigation={true} locale="en" forceValidDate={true} highlightWeekends={false} highlightToday={true} weekNumbers={false} weekStartDay={1} onChange={this.dateOnChange} />
+            </DateField>
         </div>
         <div>
             priority :
@@ -31,6 +35,12 @@ class SidePanelEdit extends Component {
             <button className="btn" onClick={()=>this.editBubble()}>update</button>
         </div>
       </div>)
+  }
+
+  dateOnChange = (dateString, { dateMoment, timestamp }) => {
+    var evt = {}
+    evt["target"] = {"value": timestamp};
+    this.props.updateEditBubble("duedate", evt)
   }
 
   editBubble = () =>{

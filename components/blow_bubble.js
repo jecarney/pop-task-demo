@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import 'react-date-picker/index.css'
+import { DatePicker, DateField, Calendar } from 'react-date-picker'
 
 class BlowBubble extends Component {
   render() {
@@ -6,15 +8,17 @@ class BlowBubble extends Component {
       <div className="blow clearfix widget">
           <h3>blow bubble</h3>
               <div>
-                  name :
+                  <span>name :</span>
                   <input id="name" value={ this.props.newBubble.name} onChange={(evt)=>this.props.updateNewBubble("name", evt) } type="textbox"  />
               </div>
               <div>
-                  due date:
-                  <input id="duedate" value={ this.props.newBubble.duedate} onChange={ (evt)=>this.props.updateNewBubble("duedate", evt) } type="date" />
+                  <span>due date:</span>
+                  <DateField dateFormat="YYYY-MM-DD" forceValidDate={true} value={this.props.newBubble.duedate} updateOnDateClick={true} collapseOnDateClick={true} >
+                    <DatePicker navigation={true} locale="en" forceValidDate={true} highlightWeekends={false} highlightToday={true} weekNumbers={false} weekStartDay={1} onChange={this.dateOnChange} />
+                  </DateField>
               </div>
               <div>
-                  priority :
+                  <span>priority :</span>
                   <select id="priority" value={this.props.newBubble.priority} onChange={(evt)=>this.props.updateNewBubble("priority", evt)}>
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -28,6 +32,21 @@ class BlowBubble extends Component {
       </div>
     );
   }
+
+  updateNewBubble = (key, event) => {
+    var newBubble = this.state.newBubble;
+    newBubble[key] = event.target.value;
+    this.setState({newBubble: newBubble });
+  }
+
+  dateOnChange = (dateString, { dateMoment, timestamp }) => {
+    var evt = {}
+    evt["target"] = {"value": timestamp};
+    this.props.updateNewBubble("duedate", evt)
+  }
 }
+
+
+
 
 export default BlowBubble;

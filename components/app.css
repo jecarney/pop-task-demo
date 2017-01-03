@@ -8,6 +8,7 @@
 }
 
 #demo-wrap {
+  z-index: 1;
   margin: 0 auto;
   width: 965px;
   font-family: 'Proza Libre', sans-serif;
@@ -105,6 +106,23 @@ a{
   padding:10px;
   margin: 15px 0 0 5px;
   width: 220px;
+}
+
+/*.blow{
+  display: inline-block;
+}*/
+
+.blow div, .widget-content{
+  float:left;
+}
+
+.react-date-field--theme-default{
+  border-color: #dfdfdf !important;
+}
+
+.react-date-field{
+    /*position: inherit !important;*/
+    max-width: 120px;
 }
 
 /* FORM ELEMENTS */
@@ -222,15 +240,6 @@ label{
 
 .invisible {
   display:none;
-}
-
-/*.blow{
-  display: inline-block;
-}*/
-
-.blow div, .widget-content{
-  float:left;
-  clear:both;
 }
 
 h3{

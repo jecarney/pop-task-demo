@@ -16,14 +16,6 @@ class Current extends Component {
   url = '/api/bubbles';
 
   render() {
-    // console.log(this.props.params.tut_phase);
-    // if (this.props.params.tut_phase) {
-    //
-    //   this.setState({
-    //     demoPhase: this.props.params.tut_phase
-    //   });
-    // }
-    console.log(this.props.params.tut_phase);
 
     if(this.state.demoPhase===4||this.props.params.tut_phase==="done") {
       return (
