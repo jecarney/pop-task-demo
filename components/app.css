@@ -101,8 +101,10 @@ a{
 }
 
 .widget{
-  border: solid #b836e3 2px;
+  box-shadow: inset -5px -2px 20px rgb(204, 204, 204);
+  border: solid #cccccc 2px;
   border-radius: 28px;
+  background: #ffffff;
   padding:10px;
   margin: 15px 0 0 5px;
   width: 220px;
@@ -131,21 +133,21 @@ a{
  -webkit-border-radius: 28;
  -moz-border-radius: 28;
  border-radius: 28px;
- color: #b836e3;
+ color: black;
  font-size: 0.8em;
  background: #ffffff;
  margin: 10px;
- border: solid #b836e3 2px;
+ border: solid #cccccc 2px;
  text-decoration: none;
 }
 
 .btn:hover {
  background: #eed5fa;
- background-image: -webkit-linear-gradient(top, #ffffff, #f3e0ff);
- background-image: -moz-linear-gradient(top, #ffffff, #f3e0ff);
- background-image: -ms-linear-gradient(top, #ffffff, #f3e0ff);
- background-image: -o-linear-gradient(top, #ffffff, #f3e0ff);
- background-image: linear-gradient(to bottom, #ffffff, #f3e0ff);
+ background-image: -webkit-linear-gradient(top, #ffffff, #caf4f8);
+ background-image: -moz-linear-gradient(top, #ffffff, #caf4f8);
+ background-image: -ms-linear-gradient(top, #ffffff, #caf4f8);
+ background-image: -o-linear-gradient(top, #ffffff, #caf4f8);
+ background-image: linear-gradient(to bottom, #ffffff, #caf4f8);
  text-decoration: none;
 }
 
@@ -175,12 +177,12 @@ label{
 /*LINKS*/
 
 .link{
-  background-color: rgba(150, 99, 150, 0.4);
+  /*background-color: rgba(150, 99, 150, 0.4);*/
   padding: 10px 10px 10px 37px;
   display: inline-block;
 }
 
-.up{
+/*.up{
   background: url(/uparrow.png) left center no-repeat;
 }
 
@@ -189,19 +191,23 @@ label{
   margin-top: 40px;
   /*position: fixed;
   bottom: 10px;*/
-}
+/*}*/
 
 /*BUBBLES*/
 
 .bubble
 {
+  /*background-image: radial-gradient(circle at 60px 20px, rgb(255, 255, 255), #e7cadb);*/
+  /*background-image: radial-gradient(circle at 60px 20px, rgb(255, 255, 255) 0%, #e7cadb 95%, #750cff 100%);*/
+
+  /*radial-gradient(ellipse farthest-corner at 45px 45px , #00FFFF 0%, rgba(0, 0, 255, 0) 50%, #0000FF 95%);*/
   position: relative;
   float: left;
   /*padding: 10px;*/
-  background-color:rgba(26, 209, 226, 0.1);
+  /*background-color:rgba(26, 209, 226, 0.1);*/
   border-radius: 90%;
   text-align: center;
-  box-shadow:inset -5px -2px 20px rgba(26, 209, 226, 0.3);
+  /*box-shadow:inset -5px -2px 20px rgba(26, 209, 226, 0.3);*/
 }
 
 .editBtn{
@@ -248,17 +254,19 @@ h3{
 }
 
 .priority1{
-  box-shadow:inset -5px -2px 20px rgba(226, 26, 100, 0.3);
-  padding: 25px;
+  /*box-shadow:inset -5px -2px 20px rgba(226, 26, 100, 0.3);*/
+    background-image: radial-gradient(circle at 70% 30%, #ffffff 2%, rgba(53, 214, 255, 0.22) 30%, rgba(180, 0, 255, 0.14) 95%);
+      padding: 25px;
 }
 
 .priority2{
-  box-shadow:inset -5px -2px 20px rgba(116, 26, 226, 0.3);
+  background-image: radial-gradient(circle at 70% 30%, #ffffff 2%, rgba(126, 255, 121, 0.26) 25%, rgba(120, 241, 255, 0.49) 95%);
   padding: 15px;
 }
 
 .priority3{
-  box-shadow:inset -5px -2px 20px rgba(26, 209, 226, 0.3);
+  background-image: radial-gradient(circle at 70% 30%, #ffffff 1%, rgba(255, 158, 245, 0.22) 20%, rgba(247, 213, 116, 0.45) 95%);
+
   padding: 5px;
 }
 
@@ -269,13 +277,17 @@ h1{
 }
 
 header{
-  /*background-image: url(/soap_bubble.png);*/
-  border: solid #b836e3 2px;
+  background-image: url(/soap_bubble.jpg);
+  /*border: solid #d1faff 2px;*/
   border-radius: 28px;
   padding:10px 0 10px 0;
   width: 100%;
   text-align: center;
   margin: 0;
+  color: #d2f5f9;
+  text-shadow: -1px 0 15px black, 0 1px 15px black, 1px 0 15px black, 0 -1px 15px black;
+  /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+
   /*display: block;
   position: relative;*/
 }
@@ -312,7 +324,7 @@ header{
   width: 175px;
   padding:30px 10px 10px 40px;
   text-align: left;
-  background: url(/bubbleline.png) left center no-repeat;
+  /*background: url(/bubbleline.png) left center no-repeat;*/
 }
 
 .pincursor{
@@ -329,7 +341,8 @@ header{
 .popped-grid{
   width: 100%;
   display: inline-block;
-  background-color:rgba(103,66,144,0.12);
+  box-shadow: inset -5px -2px 20px rgb(204, 204, 204);
+  border-radius: 28px;
 	/*background-image: radial-gradient(#fff 10%, transparent 10%),
 	radial-gradient(#fff 10%, transparent 10%);
 	background-size: 30px 30px;

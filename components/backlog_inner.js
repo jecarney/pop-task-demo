@@ -24,7 +24,7 @@ class BackLogInner extends Component {
     return (
       <div>
         <div className="left-column centerChildren">
-          <Link className="link up" to="/done">Current</Link>
+          <Link className="link up" to="/done"><span class='arrow'>&#9650;</span> Current</Link>
           <BlowBubble newBubble={this.props.newBubble} updateNewBubble={this.props.updateNewBubble} submitNewBubble={() => this.props.submitNewBubble(this.url)} />
           <MakeCurrent toggleMakeCurrent={this.toggleMakeCurrent} />
           <DeleteBubble toggleDelete={this.props.toggleDelete}/>
@@ -32,7 +32,7 @@ class BackLogInner extends Component {
         <div className="centre-column">
           <ShowBubbles bubbles={this.props.bubbles} onHover={this.props.onHover} onMouseOut={this.props.onMouseOut} bubbleClick={this.bubbleClick} isTiming={() => {return 'bubble'}} deleteActive={this.props.deleteActive} toggleDelete={this.props.toggleDelete} editInit={this.props.editInit} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)}/>
         </div>
-        <div className="right-column">
+        <div className="right-column widget">
           <SidePanel activeBubble={this.props.activeBubble} editActive={this.props.editActive} editBubble={this.props.editBubble} updateEditBubble={this.props.updateEditBubble} resetEditBubble={this.props.resetEditBubble} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)}/>
         </div>
       </div>
