@@ -73,6 +73,7 @@ class BackLogInner extends Component {
       })
       .then((response)=> {
         this.props.onRefresh(this.url);
+        this.props.resetDetails();
       })
     }
     this.fetchHelper('/api/bubbles', 'POST', bubble, then1, null)
