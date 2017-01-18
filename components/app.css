@@ -10,15 +10,14 @@
 #demo-wrap {
   z-index: 2;
   margin: 0 auto;
-  width: 965px;
   font-family: 'Proza Libre', sans-serif;
   background-color: rgba(62, 62, 62, 0.7);
-  height:100vh;
+  height:100%;
   position: absolute;
   text-align: center;
   color: white;
   font-size: 1.5em;
-  padding: 30px;
+  /*padding: 30px;*/
 }
 
 .demo-1{
@@ -157,9 +156,9 @@ a{
   border-color: #dfdfdf !important;
 }
 
-.react-date-field{
+/*.react-date-field{
     max-width: 120px;
-}
+}*/
 
 /* FORM ELEMENTS */
 
