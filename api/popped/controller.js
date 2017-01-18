@@ -42,7 +42,6 @@ exports.update = function(req, res) {
 
 exports.create = function(req, res) {
   var popped = new Popped();
-
   Object.assign(popped, req.body);
 
   popped.save()

@@ -24,16 +24,16 @@ class BackLogInner extends Component {
     return (
       <div>
         <div className="left-column centerChildren">
-          <Link className="link up" to="/done"><span class='arrow'>&#9650;</span> Current</Link>
+          <div className="btn link">
+            <Link to="/done"><span className='arrow'>&#9650;</span> Current</Link>
+          </div>
           <BlowBubble newBubble={this.props.newBubble} updateNewBubble={this.props.updateNewBubble} submitNewBubble={() => this.props.submitNewBubble(this.url)} />
-          <MakeCurrent toggleMakeCurrent={this.toggleMakeCurrent} />
-          <DeleteBubble toggleDelete={this.props.toggleDelete}/>
         </div>
         <div className="centre-column">
-          <ShowBubbles bubbles={this.props.bubbles} onHover={this.props.onHover} onMouseOut={this.props.onMouseOut} bubbleClick={this.bubbleClick} isTiming={() => {return 'bubble'}} deleteActive={this.props.deleteActive} toggleDelete={this.props.toggleDelete} editInit={this.props.editInit} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)}/>
+          <ShowBubbles bubbles={this.props.bubbles} bubbleClick={this.props.bubbleClick} isTiming={() => {return false}} deleteActive={this.props.deleteActive} toggleDelete={this.props.toggleDelete} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)} isActive={this.props.isActive} isBackLog={true}/>
         </div>
         <div className="right-column widget">
-          <SidePanel activeBubble={this.props.activeBubble} editActive={this.props.editActive} editBubble={this.props.editBubble} updateEditBubble={this.props.updateEditBubble} resetEditBubble={this.props.resetEditBubble} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)}/>
+          <SidePanel activeBubble={this.props.activeBubble} editInit={this.props.editInit} editActive={this.props.editActive} editBubble={this.props.editBubble} updateEditBubble={this.props.updateEditBubble} resetEditBubble={this.props.resetEditBubble} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)} isCurrent={false} resetDetails={this.props.resetDetails} makeCurrent={this.makeCurrent}/>
         </div>
       </div>
     );

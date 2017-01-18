@@ -8,13 +8,13 @@ class SidePanelEdit extends Component {
       // console.log(this.props.editBubble);
 
       return (
-      <div className="sidepanel">
+      <div className="sidepanel edit">
         <div>
             <span>name : </span>
             <input id="name" value={this.props.editBubble.name} onChange={(evt)=>this.props.updateEditBubble("name", evt) } type="text"  />
         </div>
         <div>
-            <span>duration : </span>
+            <span>duration (minutes): </span>
             <input id="duration_seconds" value={this.props.editBubble.duration_seconds/60} onChange={(evt)=>this.props.updateEditBubble("duration_seconds", evt)} type="number" />
         </div>
         <div>

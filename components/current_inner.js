@@ -23,17 +23,21 @@ class CurrentInner extends Component {
     return (
         <div className={this.isPopActive()}>
           <div className="left-column centerChildren">
-            <Link className="link up" to="/Popped"><span class='arrow'>&#9650;</span>  Popped</Link>
+            <div className="btn link">
+              <Link to="/Popped"><span className='arrow'>&#9650;</span>Popped</Link>
+            </div>
             <BlowBubble newBubble={this.props.newBubble} updateNewBubble={this.props.updateNewBubble} submitNewBubble={() => this.props.submitNewBubble(this.url)} />
-            <PopBubble togglePop={this.togglePop}/>
-            <DeleteBubble toggleDelete={this.props.toggleDelete}/>
-            <Link className="link down" to="/Backlog"> <span class='arrow'>&#9660;</span> Backlog</Link>
+            <div className="btn link blog">
+              <Link to="/Backlog"> <span className='arrow'>&#9660;</span>Backlog</Link>
+            </div>
           </div>
           <div className="centre-column">
-            <ShowBubbles bubbles={this.props.bubbles} onHover={this.props.onHover} onMouseOut={this.props.onMouseOut} bubbleClick={this.bubbleClick} isTiming={this.isTiming} deleteActive={this.props.deleteActive} toggleDelete={this.props.toggleDelete} editInit={this.props.editInit} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)}/>
+            <ShowBubbles bubbles={this.props.bubbles} bubbleClick={this.props.bubbleClick}  isTiming={this.isTiming} deleteActive={this.props.deleteActive} toggleDelete={this.props.toggleDelete} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)} isActive={this.props.isActive}/>
           </div>
-          <div className="right-column widget">
-            <SidePanel activeBubble={this.props.activeBubble} editActive={this.props.editActive} editBubble={this.props.editBubble} updateEditBubble={this.props.updateEditBubble} resetEditBubble={this.props.resetEditBubble} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)}/>
+          <div className="right-column">
+            <div className="widget clearfix">
+              <SidePanel activeBubble={this.props.activeBubble}  editInit={this.props.editInit} editActive={this.props.editActive} editBubble={this.props.editBubble} updateEditBubble={this.props.updateEditBubble} resetEditBubble={this.props.resetEditBubble} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)} isActive={this.props.isActive} toggleTimer={this.toggleTimer} isCurrent={true} isTiming={this.isTiming} getButtonLabel={this.getButtonLabel} resetDetails={this.props.resetDetails}/>
+            </div>
           </div>
         </div>
     );
@@ -64,7 +68,7 @@ class CurrentInner extends Component {
     });
   }
 
-  bubbleClick = (bubble) => {
+  toggleTimer = (bubble) => {
     if(this.state.isTiming===bubble._id){
       bubble.duration_seconds = Math.round(bubble.duration_seconds + ((Date.now() - bubble.intervalStart) / 1000));
       var then1 = () =>{
@@ -117,7 +121,11 @@ class CurrentInner extends Component {
   }
 
   isTiming = (id) => {
-    return 'bubble ' + ((id===this.state.isTiming) ?'timing':'');
+    return (id===this.state.isTiming);
+  }
+
+  getButtonLabel = (id) => {
+    return this.isTiming(id)?'Stop':'Start';
   }
 }
 

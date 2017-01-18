@@ -13,12 +13,12 @@ class SidePanel extends Component {
       )
     } else if(this.props.activeBubble!=null){
         return (
-          <SidePanelDetails activeBubble={this.props.activeBubble} />
+          <SidePanelDetails activeBubble={this.props.activeBubble} editInit={this.props.editInit} url={this.props.url} onRefresh={this.props.onRefresh} isTiming={this.props.isTiming} toggleTimer={this.props.toggleTimer} getButtonLabel={this.props.getButtonLabel} isCurrent={this.props.isCurrent} resetDetails={this.props.resetDetails} makeCurrent={this.props.makeCurrent}/>
         );
         }else{
           return (
             <div className="sidepanel">
-              Hover over a bubble to see details.
+              Click a bubble to see details.
             </div>
           )
         }

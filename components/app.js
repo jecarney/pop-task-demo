@@ -26,29 +26,33 @@ class App extends Component {
   };
   render() {
     return (
+
       <div id="wrapper">
-        <header>
-            <h1>pop task</h1>
-        </header>
-        <div className="error">{this.state.error}</div>
-        { React.cloneElement(this.props.children, {
-          bubbles: this.state.bubbles,
-          onRefresh: this.onRefresh,
-          onError: this.onError,
-          newBubble: this.state.newBubble,
-          updateNewBubble: this.updateNewBubble,
-          submitNewBubble: this.submitNewBubble,
-          activeBubble: this.state.activeBubble,
-          onHover: this.onHover,
-          onMouseOut: this.onMouseOut,
-          deleteActive: this.state.deleteActive,
-          toggleDelete: this.toggleDelete,
-          editBubble: this.state.editBubble,
-          editInit: this.editInit,
-          editActive: this.state.editActive,
-          updateEditBubble: this.updateEditBubble,
-          resetEditBubble: this.resetEditBubble,
-        })}
+        <div>
+          <header>
+              <h1>pop task</h1>
+          </header>
+          <div className="error">{this.state.error}</div>
+          { React.cloneElement(this.props.children, {
+            bubbles: this.state.bubbles,
+            onRefresh: this.onRefresh,
+            onError: this.onError,
+            newBubble: this.state.newBubble,
+            updateNewBubble: this.updateNewBubble,
+            submitNewBubble: this.submitNewBubble,
+            activeBubble: this.state.activeBubble,
+            bubbleClick: this.bubbleClick,
+            resetDetails: this.resetDetails,
+            deleteActive: this.state.deleteActive,
+            toggleDelete: this.toggleDelete,
+            editBubble: this.state.editBubble,
+            editInit: this.editInit,
+            editActive: this.state.editActive,
+            updateEditBubble: this.updateEditBubble,
+            resetEditBubble: this.resetEditBubble,
+            isActive: this.isActive
+          })}
+        </div>
       </div>
     )
   }
@@ -128,11 +132,11 @@ class App extends Component {
   }
 
   //bubble behaviours
-  onHover = (bubble) => {
+  bubbleClick = (bubble) => {
     this.setState({ activeBubble: bubble });
   }
 
-  onMouseOut = () => {
+  resetDetails = () => {
     this.setState({ activeBubble: null });
   }
 
@@ -146,8 +150,14 @@ class App extends Component {
   }
 
   //edit
-  editInit = (evt, bubble)=>{
-    evt.stopPropagation();
+
+  isActive = (id) => {
+    var activeID = '';
+    if (this.state.activeBubble){activeID = this.state.activeBubble._id}
+    return (id===activeID);
+  }
+
+  editInit = (bubble)=>{
     this.setState({
       editActive: true,
       editBubble: bubble

@@ -46,6 +46,7 @@ exports.create = function(req, res) {
 }
 
 exports.delete = function(req, res, next) {
+
   if (req.params.id === 'all'){
     Bubble.remove({}, function(err) {
       console.log(err);

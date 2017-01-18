@@ -8,7 +8,7 @@
 }
 
 #demo-wrap {
-  z-index: 1;
+  z-index: 2;
   margin: 0 auto;
   width: 965px;
   font-family: 'Proza Libre', sans-serif;
@@ -27,16 +27,50 @@
 
 /* GLOBAL */
 
-/*div{outline: dotted yellow;}*/
+html, body {
+  margin:0;padding:0;height:100%;
+}
 
-html, body {margin:0;padding:0;height:100%;}
+body{
+  background-image: url(/soap_bubble2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 
 #wrapper {
   margin: 0 auto;
-  width: 960px;
+  /*width: 960px;*/
   font-family: 'Proza Libre', sans-serif;
   color: rgba(53, 7, 91, 0.9);
-  height:100%;
+  height:100vh;
+  position: relative;
+  /*background-color: rgba(0, 255, 255, 0.34);*/
+  /*background-color: white;*/
+
+  /*overflow: hidden;*/
+}
+/*
+body:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.4;
+    background-image: url(/soap_bubble2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}*/
+
+#wrapper div {
+  z-index: 1;
+  position: relative;
 }
 
 span {
@@ -88,31 +122,32 @@ a{
 .left-column{
   float:left;
   width:25%;
+  padding-left: 40px;
 }
 
 .centre-column{
   float:left;
-  width:45%;
+  width: 42%
 }
 
 .right-column{
   float:left;
   width:25%;
+  padding-right: 40px;
 }
 
 .widget{
-  box-shadow: inset -5px -2px 20px rgb(204, 204, 204);
-  border: solid #cccccc 2px;
+  box-shadow: inset -5px -2px 20px #8e8e8e;
+  border: solid #bfbfbf 1px;
   border-radius: 28px;
   background: #ffffff;
   padding:10px;
   margin: 15px 0 0 5px;
-  width: 220px;
 }
 
-/*.blow{
-  display: inline-block;
-}*/
+.blow {
+  width: 220px;
+}
 
 .blow div, .widget-content{
   float:left;
@@ -123,7 +158,6 @@ a{
 }
 
 .react-date-field{
-    /*position: inherit !important;*/
     max-width: 120px;
 }
 
@@ -136,7 +170,7 @@ a{
  color: black;
  font-size: 0.8em;
  background: #ffffff;
- margin: 10px;
+ margin: 10px 3px 10px 3px;
  border: solid #cccccc 2px;
  text-decoration: none;
 }
@@ -177,59 +211,51 @@ label{
 /*LINKS*/
 
 .link{
-  /*background-color: rgba(150, 99, 150, 0.4);*/
-  padding: 10px 10px 10px 37px;
+  padding: 10px;
   display: inline-block;
+  margin-right: 40px;
 }
 
-/*.up{
-  background: url(/uparrow.png) left center no-repeat;
+.blog{
+  margin-top: 25px;
 }
-
-.down{
-  background: url(/downarrow.png) left center no-repeat;
-  margin-top: 40px;
-  /*position: fixed;
-  bottom: 10px;*/
-/*}*/
 
 /*BUBBLES*/
 
 .bubble
 {
-  /*background-image: radial-gradient(circle at 60px 20px, rgb(255, 255, 255), #e7cadb);*/
-  /*background-image: radial-gradient(circle at 60px 20px, rgb(255, 255, 255) 0%, #e7cadb 95%, #750cff 100%);*/
-
-  /*radial-gradient(ellipse farthest-corner at 45px 45px , #00FFFF 0%, rgba(0, 0, 255, 0) 50%, #0000FF 95%);*/
   position: relative;
   float: left;
-  /*padding: 10px;*/
-  /*background-color:rgba(26, 209, 226, 0.1);*/
   border-radius: 90%;
   text-align: center;
-  /*box-shadow:inset -5px -2px 20px rgba(26, 209, 226, 0.3);*/
+  background-color: white;
+  box-shadow: 0 0 20px #888888;
 }
 
-.editBtn{
+.active{
+  box-shadow: 0 0 30px 5px #9e45ff;
+}
+
+.startBtn{
   padding-left: 13px;
 }
 
-.deleteBtn, .editBtn{
+.startBtn{
   background:none;
   border:none;
   font-family: 'Proza Libre', sans-serif;
-  color: rgba(252, 105, 255, 0.0);
+  color: rgba(138, 132, 255, 0.0);
   position: absolute;
   top:0;
   left:0;
 }
 
-.deleteBtn{
-  z-index: 999;
+.showStart{
+  color: rgba(138, 132, 255, 0.8);
 }
 
-.deleteBtn:hover, .editBtn:hover{
-  color: rgba(252, 105, 255, 0.8);
+.deleteBtn:hover, .startBtn:hover{
+  color: rgba(138, 132, 255, 0.8);
 }
 
 .btnHolder {
@@ -254,7 +280,6 @@ h3{
 }
 
 .priority1{
-  /*box-shadow:inset -5px -2px 20px rgba(226, 26, 100, 0.3);*/
     background-image: radial-gradient(circle at 70% 30%, #ffffff 2%, rgba(53, 214, 255, 0.22) 30%, rgba(180, 0, 255, 0.14) 95%);
       padding: 25px;
 }
@@ -277,58 +302,31 @@ h1{
 }
 
 header{
-  background-image: url(/soap_bubble.jpg);
-  /*border: solid #d1faff 2px;*/
   border-radius: 28px;
   padding:10px 0 10px 0;
   width: 100%;
   text-align: center;
   margin: 0;
-  color: #d2f5f9;
+  color: white;
   text-shadow: -1px 0 15px black, 0 1px 15px black, 1px 0 15px black, 0 -1px 15px black;
-  /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
-
-  /*display: block;
-  position: relative;*/
 }
-
-/*header:after {
-  content: "";
-  background-image: url(/soap_bubble.png);
-  opacity: 0.7;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-}*/
-
-/*.frame{
-  padding: 20px;
-  color:white;
-}*/
-
-/*.dimmer {
-  background-color: rgba(88, 92, 152, 0.61);
-  width: 100%;
-  height: 100%;
-  padding: 20px 0 20px 0;
-}*/
 
 /*CURRENT SCREEN*/
 
 .sidepanel {
-  float: right;
   height:200px;
   width: 175px;
-  padding:30px 10px 10px 40px;
   text-align: left;
-  /*background: url(/bubbleline.png) left center no-repeat;*/
+  overflow-wrap: break-word;
+  padding: 20px 0 0 10px;
 }
 
-.pincursor{
-  cursor: url(/pin.png), auto;
+.sidepanel p {
+  width: 250px;
+}
+
+.edit {
+  float: left;
 }
 
 /*POPPED SCREEN*/
@@ -336,6 +334,7 @@ header{
 .pop-col{
   width: 20%;
   text-align: center;
+  height: 20px;
 }
 
 .popped-grid{
@@ -343,10 +342,7 @@ header{
   display: inline-block;
   box-shadow: inset -5px -2px 20px rgb(204, 204, 204);
   border-radius: 28px;
-	/*background-image: radial-gradient(#fff 10%, transparent 10%),
-	radial-gradient(#fff 10%, transparent 10%);
-	background-size: 30px 30px;
-	background-position: 0 0, 15px 15px;*/
+  background-color: white;
 }
 
 .popped-wrapper{
