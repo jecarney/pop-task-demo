@@ -12,7 +12,7 @@ class BlowBubble extends Component {
                   <input id="name" value={ this.props.newBubble.name} onChange={(evt)=>this.props.updateNewBubble("name", evt) } type="textbox"  />
               </div>
               <div>
-                  <span>due date:</span>
+                  <span id="datespan">due date:</span>
                   <DateField dateFormat="YYYY-MM-DD" forceValidDate={true} value={this.props.newBubble.duedate} updateOnDateClick={true} collapseOnDateClick={true} >
                     <DatePicker navigation={true} locale="en" forceValidDate={true} highlightWeekends={false} highlightToday={true} weekNumbers={false} weekStartDay={1} onChange={this.dateOnChange} />
                   </DateField>
@@ -27,7 +27,7 @@ class BlowBubble extends Component {
               </div>
 
           <div className="centerChildren">
-              <button className="btn" onClick={()=>this.props.submitNewBubble()}>Blow Bubble</button>
+              <button className="btn" onClick={()=>this.props.submitNewBubble()}>blow bubble</button>
           </div>
       </div>
     );

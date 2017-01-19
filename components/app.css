@@ -17,12 +17,14 @@
   text-align: center;
   color: white;
   font-size: 1.5em;
-  /*padding: 30px;*/
+  width: 100%
 }
 
 .demo-1{
   margin-top: 100px;
-}
+  width: 700px;
+  margin-right: auto;
+margin-left: auto;}
 
 /* GLOBAL */
 
@@ -72,10 +74,6 @@ body:after {
   position: relative;
 }
 
-span {
-  float:left;
-}
-
 p {
   margin-bottom:0;
 }
@@ -120,7 +118,8 @@ a{
 
 .left-column{
   float:left;
-  width:25%;
+  /*width:25%;*/
+  width: 250px;
   padding-left: 40px;
 }
 
@@ -130,8 +129,9 @@ a{
 }
 
 .right-column{
-  float:left;
-  width:25%;
+  float:right;
+  /*width:25%;*/
+  width: 250px;
   padding-right: 40px;
 }
 
@@ -145,10 +145,14 @@ a{
 }
 
 .blow {
-  width: 220px;
+  width: 250px;
 }
 
 .blow div, .widget-content{
+  float:left;
+}
+
+#datespan {
   float:left;
 }
 
@@ -212,7 +216,7 @@ label{
 .link{
   padding: 10px;
   display: inline-block;
-  margin-right: 40px;
+  /*margin-right: 10px;*/
 }
 
 .blog{
@@ -313,11 +317,15 @@ header{
 /*CURRENT SCREEN*/
 
 .sidepanel {
-  height:200px;
+  height:220px;
   width: 175px;
   text-align: left;
   overflow-wrap: break-word;
   padding: 20px 0 0 10px;
+}
+
+.edit span {
+  display: block;
 }
 
 .sidepanel p {

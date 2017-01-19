@@ -25,7 +25,7 @@ class BackLogInner extends Component {
       <div>
         <div className="left-column centerChildren">
           <div className="btn link">
-            <Link to="/done"><span className='arrow'>&#9650;</span> Current</Link>
+            <Link to="/done"><span className='arrow'>&#9650;</span>current</Link>
           </div>
           <BlowBubble newBubble={this.props.newBubble} updateNewBubble={this.props.updateNewBubble} submitNewBubble={() => this.props.submitNewBubble(this.url)} />
         </div>

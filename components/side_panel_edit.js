@@ -24,7 +24,7 @@ class SidePanelEdit extends Component {
             </DateField>
         </div>
         <div>
-            priority :
+            <span>priority :</span>
             <select id="priority" value={this.props.editBubble.priority} onChange={(evt)=>this.props.updateEditBubble("priority", evt)}>
                 <option value="1">1</option>
                 <option value="2">2</option>

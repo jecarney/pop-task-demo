@@ -24,11 +24,11 @@ class CurrentInner extends Component {
         <div className={this.isPopActive()}>
           <div className="left-column centerChildren">
             <div className="btn link">
-              <Link to="/Popped"><span className='arrow'>&#9650;</span>Popped</Link>
+              <Link to="/Popped"><span className='arrow'>&#9650;</span>popped</Link>
             </div>
             <BlowBubble newBubble={this.props.newBubble} updateNewBubble={this.props.updateNewBubble} submitNewBubble={() => this.props.submitNewBubble(this.url)} />
             <div className="btn link blog">
-              <Link to="/Backlog"> <span className='arrow'>&#9660;</span>Backlog</Link>
+              <Link to="/Backlog"> <span className='arrow'>&#9660;</span>backlog</Link>
             </div>
           </div>
           <div className="centre-column">
