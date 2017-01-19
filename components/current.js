@@ -29,7 +29,7 @@ class Current extends Component {
           <DemoScreen next={this.next1}>
             <div className="demo-1">
               <p>Hi! </p>
-              <p> <strong>pop task</strong> can be used to manage daily tasks and track time with a minimum of distraction. It was created using React, Express, and Mongoose. To begin, please click <strong>Next</strong>. </p>
+              <p> <strong>pop task</strong> can be used to manage daily tasks and track time with a minimum of distraction. It was created using React, Express, and Mongoose. </p>
             </div>
           </DemoScreen>
           <App>
