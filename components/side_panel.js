@@ -6,8 +6,6 @@ import SidePanelEdit from './side_panel_edit'
 class SidePanel extends Component {
   render() {
     if(this.props.editActive){
-      // console.log('this.props.editBubble in SidePanel');
-      // console.log(this.props.editBubble);
       return (
         <SidePanelEdit editBubble={this.props.editBubble} updateEditBubble={this.props.updateEditBubble} resetEditBubble={this.props.resetEditBubble} url={this.props.url} onError={this.props.onError} onRefresh={this.props.onRefresh}/>
       )
@@ -18,7 +16,7 @@ class SidePanel extends Component {
         }else{
           return (
             <div className="sidepanel">
-              Click a bubble to see details.
+              <h3>click to select bubble</h3>
             </div>
           )
         }

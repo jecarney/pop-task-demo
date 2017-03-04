@@ -6,7 +6,6 @@ class SidePanelEdit extends Component {
   render() {
       return (
       <div className="sidepanel edit">
-        <h3>selected bubble</h3>
         <div>
             <label>name : </label>
             <input id="name" value={this.props.editBubble.name} onChange={(evt)=>this.props.updateEditBubble("name", evt) } type="text"  />

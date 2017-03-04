@@ -3,6 +3,7 @@ import './app.css'
 require('es6-promise').polyfill();
 import fetch from "isomorphic-fetch";
 import moment from 'moment'
+import Helmet from "react-helmet";
 
 class App extends Component {
   constructor() {
@@ -21,16 +22,23 @@ class App extends Component {
       deleteActive: false,
       activeBubble: null,
       editActive: false,
-      editBubble: null
+      editBubble: null,
+      openColumn: "centre"
     };
   };
   render() {
     return (
 
-      <div id="wrapper">
-        <div>
+      <div className="wrapper">
+        <Helmet
+          title="Pop Task"
+          meta={[
+                  {name: "description", content: "minimalist task manager"},
+                  {name:"viewport", content:"width=device-width,initial-scale=1"}
+                ]}/>
+        <div className="wrapper__content">
           <header>
-              <h1>pop task</h1>
+              <h1 className="title">pop task</h1>
           </header>
           <div className="error">{this.state.error}</div>
           { React.cloneElement(this.props.children, {
@@ -50,7 +58,9 @@ class App extends Component {
             editActive: this.state.editActive,
             updateEditBubble: this.updateEditBubble,
             resetEditBubble: this.resetEditBubble,
-            isActive: this.isActive
+            isActive: this.isActive,
+            toggleColumn: this.toggleColumn,
+            columnHideClass: this.columnHideClass
           })}
         </div>
       </div>
@@ -117,7 +127,8 @@ class App extends Component {
          "taskStartDate":moment().valueOf(),
          "intervalStart":moment().valueOf(),
          "duration_seconds":0
-       }
+       },
+       openColumn: "centre"
      });
      this.onRefresh(url);
     }
@@ -132,12 +143,13 @@ class App extends Component {
   }
 
   //bubble behaviours
+
   bubbleClick = (bubble) => {
-    this.setState({ activeBubble: bubble });
+    this.setState({ activeBubble: bubble, openColumn: "right"});
   }
 
   resetDetails = () => {
-    this.setState({ activeBubble: null });
+    this.setState({ editBubble: null, activeBubble: null, openColumn: "centre" });
   }
 
   //delete
@@ -160,7 +172,7 @@ class App extends Component {
   editInit = (bubble)=>{
     this.setState({
       editActive: true,
-      editBubble: bubble
+      editBubble: bubble,
     });
   }
 
@@ -180,8 +192,28 @@ class App extends Component {
   resetEditBubble = () => {
     this.setState({
       editActive: false,
-      editBubble: null
+      editBubble: null,
+      activeBubble: null,
+      openColumn: "centre"
         });
+  }
+
+  /* layout nav*/
+
+
+
+  toggleColumn = (column) => {
+    this.setState({
+      openColumn: column
+    });
+  }
+
+  columnHideClass = (column) => {
+    if (this.state.openColumn===column){
+      return " column--show"
+    }else{
+      return " column--hide"
+    }
   }
 
 }

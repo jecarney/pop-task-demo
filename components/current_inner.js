@@ -13,7 +13,7 @@ class CurrentInner extends Component {
     super();
     this.state = {
       popActive: false,
-      isTiming: null
+      isTiming: null,
     };
   };
 
@@ -21,20 +21,23 @@ class CurrentInner extends Component {
 
   render() {
     return (
-        <div className={this.isPopActive()}>
-          <div className="left-column centerChildren">
-            <div className="btn link">
-              <Link to="/Popped"><span className='arrow'>&#9650;</span>popped</Link>
-            </div>
+        <div className="dim clearfix">
+          <div className="link link--top">
+            <Link to="/Popped"><span className='arrow'>&#9650;</span>popped</Link>
+          </div>
+          <div className="link link--bottom">
+            <Link to="/Backlog"> <span className='arrow'>&#9660;</span>backlog</Link>
+          </div>
+          <div className={"column column--side column--left" + this.props.columnHideClass("left")}>
+            <img src="close.png" alt="click to close blow bubble dialog" className="close clearfix" onClick={() => this.props.toggleColumn("centre")}/>
             <BlowBubble newBubble={this.props.newBubble} updateNewBubble={this.props.updateNewBubble} submitNewBubble={() => this.props.submitNewBubble(this.url)} />
-            <div className="btn link blog">
-              <Link to="/Backlog"> <span className='arrow'>&#9660;</span>backlog</Link>
-            </div>
           </div>
-          <div className="centre-column">
-            <ShowBubbles bubbles={this.props.bubbles} bubbleClick={this.props.bubbleClick}  isTiming={this.isTiming} deleteActive={this.props.deleteActive} toggleDelete={this.props.toggleDelete} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)} isActive={this.props.isActive}/>
+          <div className={"column" + this.props.columnHideClass("centre")}>
+            <img className="wand" src="wand.png" alt="click to blow bubble" onClick={() => this.props.toggleColumn("left")}/>
+            <ShowBubbles bubbles={this.props.bubbles} bubbleClick={this.props.bubbleClick}  isTiming={this.isTiming} deleteActive={this.props.deleteActive} toggleDelete={this.props.toggleDelete} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)} isActive={this.props.isActive} toggleColumn={this.props.toggleColumn}/>
           </div>
-          <div className="right-column">
+          <div className={"column column--side column--right" + this.props.columnHideClass("right")} >
+            <img src="close.png" alt="click to close bubble detail dialog" className="close clearfix" onClick={() => this.props.toggleColumn("centre")}/>
             <div className="widget clearfix">
               <SidePanel activeBubble={this.props.activeBubble}  editInit={this.props.editInit} editActive={this.props.editActive} editBubble={this.props.editBubble} updateEditBubble={this.props.updateEditBubble} resetEditBubble={this.props.resetEditBubble} url={this.url} onError={this.props.onError} onRefresh={() => this.props.onRefresh(this.url)} isActive={this.props.isActive} toggleTimer={this.toggleTimer} isCurrent={true} isTiming={this.isTiming} getButtonLabel={this.getButtonLabel} resetDetails={this.props.resetDetails}/>
             </div>
@@ -69,6 +72,8 @@ class CurrentInner extends Component {
   }
 
   toggleTimer = (bubble) => {
+    // console.log("this.state.isTiming: " + this.state.isTiming + " bubble.duration_seconds: " + bubble.duration_seconds + " bubble.intervalStart: " + bubble.intervalStart + " Date.now(): " + Date.now());
+    // console.log("((Date.now() - bubble.intervalStart) / 1000): " + ((Date.now() - bubble.intervalStart) / 1000));
     if(this.state.isTiming===bubble._id){
       bubble.duration_seconds = Math.round(bubble.duration_seconds + ((Date.now() - bubble.intervalStart) / 1000));
       var then1 = () =>{
@@ -76,44 +81,20 @@ class CurrentInner extends Component {
         this.setState({
           isTiming: null
         });
+        this.props.resetDetails();
       }
       this.fetchHelper('/api/bubbles' + '/' + bubble._id, 'PUT', {duration_seconds: bubble.duration_seconds}, then1, null)
-    }else if (this.state.popActive===false){
+    }else{
       bubble.intervalStart = Date.now();
       var then1 = () =>{
         this.props.onRefresh(this.url);
         this.setState({
           isTiming: bubble._id
         });
+        this.props.resetDetails();
       }
       this.fetchHelper('/api/bubbles' + '/' + bubble._id, 'PUT', {intervalStart: bubble.intervalStart}, then1, null)
     }
-    if(this.state.popActive===true){
-
-      var then1 = () => {
-        fetch('/api/popped', {
-         method: 'POST',
-         headers: {
-           'Accept': 'application/json',
-           'Content-Type': 'application/json',
-         },
-         body: JSON.stringify(bubble)
-       })
-      }
-
-      var then2 = () => {
-        this.setState({
-          popActive: false
-        });
-         this.props.onRefresh(this.url);
-      }
-
-      this.fetchHelper ('/api/bubbles' + '/' + bubble._id, 'DELETE', {}, then1, then2);
-    }
-  }
-
-  isPopActive = () => {
-    return ((this.state.popActive) ?'pincursor':'');
   }
 
   togglePop = () => {

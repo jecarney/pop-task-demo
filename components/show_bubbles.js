@@ -14,7 +14,7 @@ class ShowBubbles extends Component {
               var id = bubble._id
               return (
                 <div key={ id } >
-                  <div className={(this.props.isTiming(id)?'timing':'') + ' ' + (this.props.isActive(id)?'active':'') + " bubble priority" + bubble.priority} onClick={()=>this.props.bubbleClick(bubble)}>
+                  <div className={(this.props.isTiming(id)?'timing':'') + ' ' + (this.props.isActive(id)?'bubble--active':'') + " bubble priority" + bubble.priority} onClick={()=>this.props.bubbleClick(bubble)}>
                     <p>{bubble.name}</p>
                     <div className="btnHolder">
                     </div>

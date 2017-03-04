@@ -8,17 +8,17 @@ class BlowBubble extends Component {
       <div className="blow clearfix widget">
           <h3>blow bubble</h3>
               <div>
-                  <span>name :</span>
+                  <label>name :</label>
                   <input id="name" value={ this.props.newBubble.name} onChange={(evt)=>this.props.updateNewBubble("name", evt) } type="textbox"  />
               </div>
               <div>
-                  <span id="datespan">due date:</span>
+                  <label id="datespan">due date:</label>
                   <DateField dateFormat="YYYY-MM-DD" forceValidDate={true} value={this.props.newBubble.duedate} updateOnDateClick={true} collapseOnDateClick={true} >
                     <DatePicker navigation={true} locale="en" forceValidDate={true} highlightWeekends={false} highlightToday={true} weekNumbers={false} weekStartDay={1} onChange={this.dateOnChange} />
                   </DateField>
               </div>
               <div>
-                  <span>priority :</span>
+                  <label>priority :</label>
                   <select id="priority" value={this.props.newBubble.priority} onChange={(evt)=>this.props.updateNewBubble("priority", evt)}>
                       <option value="1">1</option>
                       <option value="2">2</option>
