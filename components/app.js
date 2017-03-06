@@ -91,17 +91,19 @@ class App extends Component {
   }
 
   onRefresh = (url) => {
-    fetch(url)
-    .then((response)=> {
-      return response.json();
-  }).then((json)=>{
-      this.setState({
-       bubbles: json
-     });
-  })
-  .catch((error) => {
-        console.error(error);
-      });;
+    if (this.props.noRefresh===false){
+      fetch(url)
+      .then((response)=> {
+        return response.json();
+    }).then((json)=>{
+        this.setState({
+         bubbles: json
+       });
+    })
+    .catch((error) => {
+          console.error(error);
+        });;
+    }
 };
 
   onError = (errorMessage) => {

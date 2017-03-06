@@ -22,11 +22,11 @@ class Popped extends Component {
                   ]}/>
           <div className="wrapper__content">
             <header>
-                <h1>pop task</h1>
+                <h1 className="title">pop task</h1>
             </header>
               <div className="error">{this.state.error}</div>
             <div >
-              <div className="link">
+              <div className="link link--topleft">
                 <Link to="/done"><span className='arrow'>&#9660;</span>current</Link>
               </div>
               <div className="popped-wrapper">

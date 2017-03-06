@@ -22,8 +22,11 @@ class CurrentInner extends Component {
   render() {
     return (
         <div className="dim clearfix">
-          <div className="link link--top">
+          <div className="link link--topleft">
             <Link to="/Popped"><span className='arrow'>&#9650;</span>popped</Link>
+          </div>
+          <div className="link link--topright">
+            <Link to="/Tutorial">tutorial</Link>
           </div>
           <div className="link link--bottom">
             <Link to="/Backlog"> <span className='arrow'>&#9660;</span>backlog</Link>

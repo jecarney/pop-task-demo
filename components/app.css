@@ -3,6 +3,29 @@
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
+
+/*DEMO*/
+#demo-wrapper{
+    position: relative;
+}
+
+#demo-wrap {
+  z-index: 3;
+  margin: 0 auto;
+  font-family: 'Raleway', sans-serif;
+  background-color: rgba(62, 62, 62, 0.9);
+  height:100%;
+  position: absolute;
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  width: 100%
+}
+
+.demo-1{
+  margin-top: 100px;
+  margin: 0 auto;}
+
 /*GLOBAL*/
 
 /** {
@@ -137,7 +160,7 @@ input {
 /*LINKS*/
 
 .link {
-  z-index: 10;
+  z-index: 2;
 }
 
 .link a{
@@ -148,15 +171,21 @@ input {
   color: #f9f7ae;
 }
 
-.link--top {
+.link--topleft {
   position: absolute;
   top: 5px;
   left: 5px;
 }
 
+.link--topright {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
 .link--bottom {
   position: absolute;
-  bottom: 5px;
+  top: 55px;
   left: 5px;
 }
 
@@ -255,12 +284,17 @@ input {
     margin: 0 auto;
   }
 
+  .demo-1 {
+    max-width: 700px;
+    /*margin: 0 30px 0 30px;*/
+  }
+
 }
 
 @media screen and (min-width:945px){
 
   .column {
-    width: 31.3%;
+    width: 31.2%;
     float: left;
   }
 

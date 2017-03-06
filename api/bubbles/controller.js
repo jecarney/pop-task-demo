@@ -50,12 +50,20 @@ exports.delete = function(req, res, next) {
   if (req.params.id === 'all'){
     Bubble.remove({}, function(err) {
       console.log(err);
+    })
+    .then(() => {res.sendStatus(200)})
+    .catch((err)=> {
+      console.log(err);
+      res.status(500);
+      res.send(err);
     });
   }else{
     Bubble.findOneAndRemove({_id: req.params.id})
     .then(() => {res.sendStatus(200)})
     .catch((err)=> {
       console.log(err);
-    })
+      res.status(500);
+      res.send(err);
+    });
   }
 }

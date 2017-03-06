@@ -23,7 +23,7 @@ class BackLogInner extends Component {
 
     return (
       <div className="dim clearfix">
-        <div className="link link--top">
+        <div className="link link--topleft">
           <Link to="/done"><span className='arrow'>&#9650;</span>current</Link>
         </div>
         <div className={"column column--side column--left" + this.props.columnHideClass("left")}>
