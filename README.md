@@ -1,6 +1,8 @@
 # pop-task-demo
 DEMO VERSION
 
+deployed to https://pop-task-tut.herokuapp.com/
+
 Hi!
 
 Pop Task can be used to manage daily tasks and track time with a minimum of distraction. It was created using React, Express, and Mongoose. 
